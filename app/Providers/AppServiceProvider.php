@@ -4,20 +4,25 @@ namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\Schema;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Artisan;
 
 
 
 class AppServiceProvider extends ServiceProvider
 {
-    public function boot()
+  public function boot()
 {
-    if (app()->environment('production')) {
-        // Run migrations automatically on Railway
-        Artisan::call('migrate', ['--force' => true]);
+    if (app()->runningInConsole()) {
+        return; // Skip DB checks during build
     }
 
-    Schema::defaultStringLength(191); // Safe default for older MySQL
+    // Optional: check if DB is available
+    try {
+        DB::connection()->getPdo();
+    } catch (\Exception $e) {
+        // Log or skip silently
+    }
 }
 
     /**
