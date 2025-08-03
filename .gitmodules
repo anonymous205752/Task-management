@@ -1,0 +1,3 @@
+[submodule "docker-setup"]
+	path = docker-setup
+	url = https://github.com/Umar-Jimoh/laravel-dockerfile-nginx
