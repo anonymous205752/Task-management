@@ -23,7 +23,12 @@ ENV COMPOSER_ALLOW_SUPERUSER=1
 WORKDIR /var/www/html
 
 # Copy the Laravel codebase
+
+
+
 COPY . /var/www/html
+
+
 
 # Remove possible existing nginx config
 RUN rm -f /etc/nginx/sites-enabled/default /etc/nginx/conf.d/default.conf
