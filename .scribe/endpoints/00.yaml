@@ -340,7 +340,7 @@ endpoints:
         name: status
         description: ''
         required: false
-        example: pending
+        example: in_progress
         type: string
         enumValues:
           - pending
@@ -366,7 +366,7 @@ endpoints:
         name: due_date
         description: 'Must be a valid date.'
         required: false
-        example: '2025-08-04T13:20:28'
+        example: '2025-08-04T13:32:27'
         type: string
         enumValues: []
         exampleWasSpecified: false
@@ -375,9 +375,9 @@ endpoints:
     cleanBodyParameters:
       title: vmqeopfuudtdsufvyvddq
       description: 'Dolores dolorum amet iste laborum eius est dolor.'
-      status: pending
+      status: in_progress
       priority: medium
-      due_date: '2025-08-04T13:20:28'
+      due_date: '2025-08-04T13:32:27'
     fileParameters: []
     responses: []
     responseFields: []
@@ -520,7 +520,7 @@ endpoints:
         name: due_date
         description: 'Must be a valid date.'
         required: false
-        example: '2025-08-04T13:20:28'
+        example: '2025-08-04T13:32:27'
         type: string
         enumValues: []
         exampleWasSpecified: false
@@ -531,7 +531,7 @@ endpoints:
       description: 'Dolores dolorum amet iste laborum eius est dolor.'
       status: in_progress
       priority: low
-      due_date: '2025-08-04T13:20:28'
+      due_date: '2025-08-04T13:32:27'
     fileParameters: []
     responses: []
     responseFields: []
