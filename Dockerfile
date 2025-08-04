@@ -1,6 +1,6 @@
 FROM php:8.4-fpm
 
-# Install system dependencies including netcat
+# Install system dependencies including netcat-openbsd
 RUN apt-get update && apt-get install -y \
     build-essential \
     libpng-dev \
@@ -10,10 +10,10 @@ RUN apt-get update && apt-get install -y \
     zip \
     nginx \
     supervisor \
-    netcat \
+    netcat-openbsd \
     jpegoptim optipng pngquant gifsicle \
-    vim unzip git curl libonig-dev libxml2-dev libzip-dev \
-    && docker-php-ext-install pdo_mysql mbstring exif pcntl bcmath gd zip
+    vim unzip git curl libonig-dev libxml2-dev libzip-dev libpq-dev \
+    && docker-php-ext-install pdo_pgsql mbstring exif pcntl bcmath gd zip
 
 # Install Composer
 COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
@@ -31,10 +31,10 @@ COPY . /var/www/html
 RUN rm -f /etc/nginx/sites-enabled/default /etc/nginx/conf.d/default.conf
 
 # Copy custom nginx config
-COPY ./docker/nginx/default.conf /etc/nginx/conf.d/default.conf
+COPY ./docker-setup/docker/nginx/default.conf /etc/nginx/conf.d/default.conf
 
 # Copy supervisor config
-COPY ./docker/supervisor/supervisord.conf /etc/supervisor/conf.d/supervisord.conf
+COPY ./docker-setup/docker/supervisor/supervisord.conf /etc/supervisor/conf.d/supervisord.conf
 
 # Run composer install (production mode)
 RUN composer install --ignore-platform-req=php --no-dev --optimize-autoloader --verbose
@@ -45,11 +45,11 @@ RUN mkdir -p storage/framework/{sessions,views,cache} \
     && chmod -R 775 storage bootstrap/cache
 
 # Copy entrypoint script and give it execute permissions
-COPY ./docker/script/startup.sh /usr/local/bin/startup.sh
+COPY ./docker-setup/docker/script/startup.sh /usr/local/bin/startup.sh
 RUN chmod +x /usr/local/bin/startup.sh
 
 # Expose HTTP port
 EXPOSE 10000
 
 # Start the app with the startup script
-CMD ["/usr/local/bin/startup.sh"]
+CMD ["bash", "/usr/local/bin/startup.sh"]
