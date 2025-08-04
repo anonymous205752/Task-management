@@ -342,7 +342,7 @@ endpoints:
         name: status
         description: ''
         required: false
-        example: in_progress
+        example: pending
         type: string
         enumValues:
           - pending
@@ -355,7 +355,7 @@ endpoints:
         name: priority
         description: ''
         required: false
-        example: medium
+        example: high
         type: string
         enumValues:
           - low
@@ -368,7 +368,7 @@ endpoints:
         name: due_date
         description: 'Must be a valid date.'
         required: false
-        example: '2025-08-04T13:32:27'
+        example: '2025-08-04T14:10:36'
         type: string
         enumValues: []
         exampleWasSpecified: false
@@ -377,9 +377,9 @@ endpoints:
     cleanBodyParameters:
       title: vmqeopfuudtdsufvyvddq
       description: 'Dolores dolorum amet iste laborum eius est dolor.'
-      status: in_progress
-      priority: medium
-      due_date: '2025-08-04T13:32:27'
+      status: pending
+      priority: high
+      due_date: '2025-08-04T14:10:36'
     fileParameters: []
     responses: []
     responseFields: []
@@ -496,7 +496,7 @@ endpoints:
         name: status
         description: ''
         required: false
-        example: in_progress
+        example: completed
         type: string
         enumValues:
           - pending
@@ -522,7 +522,7 @@ endpoints:
         name: due_date
         description: 'Must be a valid date.'
         required: false
-        example: '2025-08-04T13:32:27'
+        example: '2025-08-04T14:10:36'
         type: string
         enumValues: []
         exampleWasSpecified: false
@@ -531,9 +531,9 @@ endpoints:
     cleanBodyParameters:
       title: vmqeopfuudtdsufvyvddq
       description: 'Dolores dolorum amet iste laborum eius est dolor.'
-      status: in_progress
+      status: completed
       priority: low
-      due_date: '2025-08-04T13:32:27'
+      due_date: '2025-08-04T14:10:36'
     fileParameters: []
     responses: []
     responseFields: []

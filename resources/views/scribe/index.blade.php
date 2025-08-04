@@ -974,9 +974,9 @@ You can check the Dev Tools console for debugging information.</code></pre>
     --data "{
     \"title\": \"vmqeopfuudtdsufvyvddq\",
     \"description\": \"Dolores dolorum amet iste laborum eius est dolor.\",
-    \"status\": \"in_progress\",
-    \"priority\": \"medium\",
-    \"due_date\": \"2025-08-04T13:32:27\"
+    \"status\": \"pending\",
+    \"priority\": \"high\",
+    \"due_date\": \"2025-08-04T14:10:36\"
 }"
 </code></pre></div>
 
@@ -994,9 +994,9 @@ const headers = {
 let body = {
     "title": "vmqeopfuudtdsufvyvddq",
     "description": "Dolores dolorum amet iste laborum eius est dolor.",
-    "status": "in_progress",
-    "priority": "medium",
-    "due_date": "2025-08-04T13:32:27"
+    "status": "pending",
+    "priority": "high",
+    "due_date": "2025-08-04T14:10:36"
 };
 
 fetch(url, {
@@ -1107,10 +1107,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
 <i>optional</i> &nbsp;
                 <input type="text" style="display: none"
                               name="status"                data-endpoint="POSTapi-tasks"
-               value="in_progress"
+               value="pending"
                data-component="body">
     <br>
-<p>Example: <code>in_progress</code></p>
+<p>Example: <code>pending</code></p>
 Must be one of:
 <ul style="list-style-type: square;"><li><code>pending</code></li> <li><code>in_progress</code></li> <li><code>completed</code></li></ul>
         </div>
@@ -1120,10 +1120,10 @@ Must be one of:
 <i>optional</i> &nbsp;
                 <input type="text" style="display: none"
                               name="priority"                data-endpoint="POSTapi-tasks"
-               value="medium"
+               value="high"
                data-component="body">
     <br>
-<p>Example: <code>medium</code></p>
+<p>Example: <code>high</code></p>
 Must be one of:
 <ul style="list-style-type: square;"><li><code>low</code></li> <li><code>medium</code></li> <li><code>high</code></li></ul>
         </div>
@@ -1133,10 +1133,10 @@ Must be one of:
 <i>optional</i> &nbsp;
                 <input type="text" style="display: none"
                               name="due_date"                data-endpoint="POSTapi-tasks"
-               value="2025-08-04T13:32:27"
+               value="2025-08-04T14:10:36"
                data-component="body">
     <br>
-<p>Must be a valid date. Example: <code>2025-08-04T13:32:27</code></p>
+<p>Must be a valid date. Example: <code>2025-08-04T14:10:36</code></p>
         </div>
         </form>
 
@@ -1295,9 +1295,9 @@ You can check the Dev Tools console for debugging information.</code></pre>
     --data "{
     \"title\": \"vmqeopfuudtdsufvyvddq\",
     \"description\": \"Dolores dolorum amet iste laborum eius est dolor.\",
-    \"status\": \"in_progress\",
+    \"status\": \"completed\",
     \"priority\": \"low\",
-    \"due_date\": \"2025-08-04T13:32:27\"
+    \"due_date\": \"2025-08-04T14:10:36\"
 }"
 </code></pre></div>
 
@@ -1315,9 +1315,9 @@ const headers = {
 let body = {
     "title": "vmqeopfuudtdsufvyvddq",
     "description": "Dolores dolorum amet iste laborum eius est dolor.",
-    "status": "in_progress",
+    "status": "completed",
     "priority": "low",
-    "due_date": "2025-08-04T13:32:27"
+    "due_date": "2025-08-04T14:10:36"
 };
 
 fetch(url, {
@@ -1440,10 +1440,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
 <i>optional</i> &nbsp;
                 <input type="text" style="display: none"
                               name="status"                data-endpoint="PUTapi-tasks--task_id-"
-               value="in_progress"
+               value="completed"
                data-component="body">
     <br>
-<p>Example: <code>in_progress</code></p>
+<p>Example: <code>completed</code></p>
 Must be one of:
 <ul style="list-style-type: square;"><li><code>pending</code></li> <li><code>in_progress</code></li> <li><code>completed</code></li></ul>
         </div>
@@ -1466,10 +1466,10 @@ Must be one of:
 <i>optional</i> &nbsp;
                 <input type="text" style="display: none"
                               name="due_date"                data-endpoint="PUTapi-tasks--task_id-"
-               value="2025-08-04T13:32:27"
+               value="2025-08-04T14:10:36"
                data-component="body">
     <br>
-<p>Must be a valid date. Example: <code>2025-08-04T13:32:27</code></p>
+<p>Must be a valid date. Example: <code>2025-08-04T14:10:36</code></p>
         </div>
         </form>
 
