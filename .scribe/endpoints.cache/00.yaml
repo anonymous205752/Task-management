@@ -153,6 +153,111 @@ endpoints:
     custom: []
   -
     httpMethods:
+      - PUT
+    uri: api/profile
+    metadata:
+      groupName: Endpoints
+      groupDescription: ''
+      subgroup: ''
+      subgroupDescription: ''
+      title: ''
+      description: ''
+      authenticated: false
+      deprecated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    cleanUrlParameters: []
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters:
+      name:
+        name: name
+        description: 'Must not be greater than 255 characters.'
+        required: false
+        example: vmqeopfuudtdsufvyvddq
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        custom: []
+      email:
+        name: email
+        description: ''
+        required: false
+        example: null
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        custom: []
+    cleanBodyParameters:
+      name: vmqeopfuudtdsufvyvddq
+    fileParameters: []
+    responses: []
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - PUT
+    uri: api/change-password
+    metadata:
+      groupName: Endpoints
+      groupDescription: ''
+      subgroup: ''
+      subgroupDescription: ''
+      title: ''
+      description: ''
+      authenticated: false
+      deprecated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    cleanUrlParameters: []
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters:
+      current_password:
+        name: current_password
+        description: ''
+        required: true
+        example: consequatur
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        custom: []
+      new_password:
+        name: new_password
+        description: 'Must be at least 6 characters.'
+        required: true
+        example: mqeopfuudtdsufvyvddqamniihfqcoynlazghdtqtqxbajwbpilpmufinllwloauydlsmsjury
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        custom: []
+    cleanBodyParameters:
+      current_password: consequatur
+      new_password: mqeopfuudtdsufvyvddqamniihfqcoynlazghdtqtqxbajwbpilpmufinllwloauydlsmsjury
+    fileParameters: []
+    responses: []
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
       - GET
     uri: api/tasks
     metadata:
@@ -237,7 +342,7 @@ endpoints:
         name: status
         description: ''
         required: false
-        example: completed
+        example: pending
         type: string
         enumValues:
           - pending
@@ -263,7 +368,7 @@ endpoints:
         name: due_date
         description: 'Must be a valid date.'
         required: false
-        example: '2025-07-29T12:08:20'
+        example: '2025-08-04T13:20:28'
         type: string
         enumValues: []
         exampleWasSpecified: false
@@ -272,9 +377,9 @@ endpoints:
     cleanBodyParameters:
       title: vmqeopfuudtdsufvyvddq
       description: 'Dolores dolorum amet iste laborum eius est dolor.'
-      status: completed
+      status: pending
       priority: medium
-      due_date: '2025-07-29T12:08:20'
+      due_date: '2025-08-04T13:20:28'
     fileParameters: []
     responses: []
     responseFields: []
@@ -286,7 +391,7 @@ endpoints:
   -
     httpMethods:
       - GET
-    uri: 'api/tasks/{id}'
+    uri: 'api/tasks/{task_id}'
     metadata:
       groupName: Endpoints
       groupDescription: ''
@@ -301,18 +406,18 @@ endpoints:
       Content-Type: application/json
       Accept: application/json
     urlParameters:
-      id:
-        name: id
+      task_id:
+        name: task_id
         description: 'The ID of the task.'
         required: true
-        example: 1
+        example: 17
         type: integer
         enumValues: []
         exampleWasSpecified: false
         nullable: false
         custom: []
     cleanUrlParameters:
-      id: 1
+      task_id: 17
     queryParameters: []
     cleanQueryParameters: []
     bodyParameters: []
@@ -337,7 +442,7 @@ endpoints:
   -
     httpMethods:
       - PUT
-    uri: 'api/tasks/{id}'
+    uri: 'api/tasks/{task_id}'
     metadata:
       groupName: Endpoints
       groupDescription: ''
@@ -352,18 +457,18 @@ endpoints:
       Content-Type: application/json
       Accept: application/json
     urlParameters:
-      id:
-        name: id
+      task_id:
+        name: task_id
         description: 'The ID of the task.'
         required: true
-        example: 1
+        example: 17
         type: integer
         enumValues: []
         exampleWasSpecified: false
         nullable: false
         custom: []
     cleanUrlParameters:
-      id: 1
+      task_id: 17
     queryParameters: []
     cleanQueryParameters: []
     bodyParameters:
@@ -391,7 +496,7 @@ endpoints:
         name: status
         description: ''
         required: false
-        example: completed
+        example: in_progress
         type: string
         enumValues:
           - pending
@@ -417,7 +522,7 @@ endpoints:
         name: due_date
         description: 'Must be a valid date.'
         required: false
-        example: '2025-07-29T12:08:20'
+        example: '2025-08-04T13:20:28'
         type: string
         enumValues: []
         exampleWasSpecified: false
@@ -426,9 +531,9 @@ endpoints:
     cleanBodyParameters:
       title: vmqeopfuudtdsufvyvddq
       description: 'Dolores dolorum amet iste laborum eius est dolor.'
-      status: completed
+      status: in_progress
       priority: low
-      due_date: '2025-07-29T12:08:20'
+      due_date: '2025-08-04T13:20:28'
     fileParameters: []
     responses: []
     responseFields: []
@@ -440,7 +545,131 @@ endpoints:
   -
     httpMethods:
       - DELETE
-    uri: 'api/tasks/{id}'
+    uri: 'api/tasks/{task_id}'
+    metadata:
+      groupName: Endpoints
+      groupDescription: ''
+      subgroup: ''
+      subgroupDescription: ''
+      title: ''
+      description: ''
+      authenticated: false
+      deprecated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters:
+      task_id:
+        name: task_id
+        description: 'The ID of the task.'
+        required: true
+        example: 17
+        type: integer
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        custom: []
+    cleanUrlParameters:
+      task_id: 17
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters: []
+    cleanBodyParameters: []
+    fileParameters: []
+    responses: []
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - PATCH
+    uri: 'api/tasks/{task}/complete'
+    metadata:
+      groupName: Endpoints
+      groupDescription: ''
+      subgroup: ''
+      subgroupDescription: ''
+      title: ''
+      description: ''
+      authenticated: false
+      deprecated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters:
+      task:
+        name: task
+        description: 'The task.'
+        required: true
+        example: 17
+        type: integer
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        custom: []
+    cleanUrlParameters:
+      task: 17
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters: []
+    cleanBodyParameters: []
+    fileParameters: []
+    responses: []
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - GET
+    uri: api/tasks/overdue
+    metadata:
+      groupName: Endpoints
+      groupDescription: ''
+      subgroup: ''
+      subgroupDescription: ''
+      title: ''
+      description: ''
+      authenticated: false
+      deprecated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    cleanUrlParameters: []
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters: []
+    cleanBodyParameters: []
+    fileParameters: []
+    responses:
+      -
+        status: 401
+        content: '{"message":"Unauthenticated."}'
+        headers:
+          cache-control: 'no-cache, private'
+          content-type: application/json
+          access-control-allow-origin: '*'
+        description: null
+        custom: []
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - PATCH
+    uri: 'api/tasks/{id}/restore'
     metadata:
       groupName: Endpoints
       groupDescription: ''
@@ -459,14 +688,14 @@ endpoints:
         name: id
         description: 'The ID of the task.'
         required: true
-        example: 1
+        example: 17
         type: integer
         enumValues: []
         exampleWasSpecified: false
         nullable: false
         custom: []
     cleanUrlParameters:
-      id: 1
+      id: 17
     queryParameters: []
     cleanQueryParameters: []
     bodyParameters: []

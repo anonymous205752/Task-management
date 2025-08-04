@@ -26,7 +26,7 @@
             </style>
 
     <script>
-        var tryItOutBaseUrl = "http://localhost";
+        var tryItOutBaseUrl = "https://task-management-pm2m.onrender.com";
         var useCsrf = Boolean();
         var csrfUrl = "/sanctum/csrf-cookie";
     </script>
@@ -80,20 +80,35 @@
                                                                                 <li class="tocify-item level-2" data-unique="endpoints-POSTapi-logout">
                                 <a href="#endpoints-POSTapi-logout">POST api/logout</a>
                             </li>
+                                                                                <li class="tocify-item level-2" data-unique="endpoints-PUTapi-profile">
+                                <a href="#endpoints-PUTapi-profile">PUT api/profile</a>
+                            </li>
+                                                                                <li class="tocify-item level-2" data-unique="endpoints-PUTapi-change-password">
+                                <a href="#endpoints-PUTapi-change-password">PUT api/change-password</a>
+                            </li>
                                                                                 <li class="tocify-item level-2" data-unique="endpoints-GETapi-tasks">
                                 <a href="#endpoints-GETapi-tasks">GET api/tasks</a>
                             </li>
                                                                                 <li class="tocify-item level-2" data-unique="endpoints-POSTapi-tasks">
                                 <a href="#endpoints-POSTapi-tasks">POST api/tasks</a>
                             </li>
-                                                                                <li class="tocify-item level-2" data-unique="endpoints-GETapi-tasks--id-">
-                                <a href="#endpoints-GETapi-tasks--id-">GET api/tasks/{id}</a>
+                                                                                <li class="tocify-item level-2" data-unique="endpoints-GETapi-tasks--task_id-">
+                                <a href="#endpoints-GETapi-tasks--task_id-">GET api/tasks/{task_id}</a>
                             </li>
-                                                                                <li class="tocify-item level-2" data-unique="endpoints-PUTapi-tasks--id-">
-                                <a href="#endpoints-PUTapi-tasks--id-">PUT api/tasks/{id}</a>
+                                                                                <li class="tocify-item level-2" data-unique="endpoints-PUTapi-tasks--task_id-">
+                                <a href="#endpoints-PUTapi-tasks--task_id-">PUT api/tasks/{task_id}</a>
                             </li>
-                                                                                <li class="tocify-item level-2" data-unique="endpoints-DELETEapi-tasks--id-">
-                                <a href="#endpoints-DELETEapi-tasks--id-">DELETE api/tasks/{id}</a>
+                                                                                <li class="tocify-item level-2" data-unique="endpoints-DELETEapi-tasks--task_id-">
+                                <a href="#endpoints-DELETEapi-tasks--task_id-">DELETE api/tasks/{task_id}</a>
+                            </li>
+                                                                                <li class="tocify-item level-2" data-unique="endpoints-PATCHapi-tasks--task--complete">
+                                <a href="#endpoints-PATCHapi-tasks--task--complete">PATCH api/tasks/{task}/complete</a>
+                            </li>
+                                                                                <li class="tocify-item level-2" data-unique="endpoints-GETapi-tasks-overdue">
+                                <a href="#endpoints-GETapi-tasks-overdue">GET api/tasks/overdue</a>
+                            </li>
+                                                                                <li class="tocify-item level-2" data-unique="endpoints-PATCHapi-tasks--id--restore">
+                                <a href="#endpoints-PATCHapi-tasks--id--restore">PATCH api/tasks/{id}/restore</a>
                             </li>
                                                                         </ul>
                             </ul>
@@ -106,7 +121,7 @@
     </ul>
 
     <ul class="toc-footer" id="last-updated">
-        <li>Last updated: July 29, 2025</li>
+        <li>Last updated: August 4, 2025</li>
     </ul>
 </div>
 
@@ -115,7 +130,7 @@
     <div class="content">
         <h1 id="introduction">Introduction</h1>
 <aside>
-    <strong>Base URL</strong>: <code>http://localhost</code>
+    <strong>Base URL</strong>: <code>https://task-management-pm2m.onrender.com</code>
 </aside>
 <pre><code>This documentation aims to provide all the information you need to work with our API.
 
@@ -142,7 +157,7 @@ You can switch the language used with the tabs at the top right (or from the nav
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request POST \
-    "http://localhost/api/register" \
+    "https://task-management-pm2m.onrender.com/api/register" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --data "{
@@ -155,7 +170,7 @@ You can switch the language used with the tabs at the top right (or from the nav
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/register"
+    "https://task-management-pm2m.onrender.com/api/register"
 );
 
 const headers = {
@@ -297,7 +312,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request POST \
-    "http://localhost/api/login" \
+    "https://task-management-pm2m.onrender.com/api/login" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --data "{
@@ -309,7 +324,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/login"
+    "https://task-management-pm2m.onrender.com/api/login"
 );
 
 const headers = {
@@ -439,14 +454,14 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request POST \
-    "http://localhost/api/logout" \
+    "https://task-management-pm2m.onrender.com/api/logout" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/logout"
+    "https://task-management-pm2m.onrender.com/api/logout"
 );
 
 const headers = {
@@ -534,6 +549,288 @@ You can check the Dev Tools console for debugging information.</code></pre>
             </div>
                         </form>
 
+                    <h2 id="endpoints-PUTapi-profile">PUT api/profile</h2>
+
+<p>
+</p>
+
+
+
+<span id="example-requests-PUTapi-profile">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request PUT \
+    "https://task-management-pm2m.onrender.com/api/profile" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json" \
+    --data "{
+    \"name\": \"vmqeopfuudtdsufvyvddq\"
+}"
+</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "https://task-management-pm2m.onrender.com/api/profile"
+);
+
+const headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+let body = {
+    "name": "vmqeopfuudtdsufvyvddq"
+};
+
+fetch(url, {
+    method: "PUT",
+    headers,
+    body: JSON.stringify(body),
+}).then(response =&gt; response.json());</code></pre></div>
+
+</span>
+
+<span id="example-responses-PUTapi-profile">
+</span>
+<span id="execution-results-PUTapi-profile" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-PUTapi-profile"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-PUTapi-profile"
+      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
+</span>
+<span id="execution-error-PUTapi-profile" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-PUTapi-profile">
+
+Tip: Check that you&#039;re properly connected to the network.
+If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
+You can check the Dev Tools console for debugging information.</code></pre>
+</span>
+<form id="form-PUTapi-profile" data-method="PUT"
+      data-path="api/profile"
+      data-authed="0"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('PUTapi-profile', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-PUTapi-profile"
+                    onclick="tryItOut('PUTapi-profile');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-PUTapi-profile"
+                    onclick="cancelTryOut('PUTapi-profile');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-PUTapi-profile"
+                    data-initial-text="Send Request 💥"
+                    data-loading-text="⏱ Sending..."
+                    hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-darkblue">PUT</small>
+            <b><code>api/profile</code></b>
+        </p>
+                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Content-Type"                data-endpoint="PUTapi-profile"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Accept"                data-endpoint="PUTapi-profile"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
+        <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>name</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="text" style="display: none"
+                              name="name"                data-endpoint="PUTapi-profile"
+               value="vmqeopfuudtdsufvyvddq"
+               data-component="body">
+    <br>
+<p>Must not be greater than 255 characters. Example: <code>vmqeopfuudtdsufvyvddq</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>email</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="text" style="display: none"
+                              name="email"                data-endpoint="PUTapi-profile"
+               value=""
+               data-component="body">
+    <br>
+
+        </div>
+        </form>
+
+                    <h2 id="endpoints-PUTapi-change-password">PUT api/change-password</h2>
+
+<p>
+</p>
+
+
+
+<span id="example-requests-PUTapi-change-password">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request PUT \
+    "https://task-management-pm2m.onrender.com/api/change-password" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json" \
+    --data "{
+    \"current_password\": \"consequatur\",
+    \"new_password\": \"mqeopfuudtdsufvyvddqamniihfqcoynlazghdtqtqxbajwbpilpmufinllwloauydlsmsjury\"
+}"
+</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "https://task-management-pm2m.onrender.com/api/change-password"
+);
+
+const headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+let body = {
+    "current_password": "consequatur",
+    "new_password": "mqeopfuudtdsufvyvddqamniihfqcoynlazghdtqtqxbajwbpilpmufinllwloauydlsmsjury"
+};
+
+fetch(url, {
+    method: "PUT",
+    headers,
+    body: JSON.stringify(body),
+}).then(response =&gt; response.json());</code></pre></div>
+
+</span>
+
+<span id="example-responses-PUTapi-change-password">
+</span>
+<span id="execution-results-PUTapi-change-password" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-PUTapi-change-password"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-PUTapi-change-password"
+      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
+</span>
+<span id="execution-error-PUTapi-change-password" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-PUTapi-change-password">
+
+Tip: Check that you&#039;re properly connected to the network.
+If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
+You can check the Dev Tools console for debugging information.</code></pre>
+</span>
+<form id="form-PUTapi-change-password" data-method="PUT"
+      data-path="api/change-password"
+      data-authed="0"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('PUTapi-change-password', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-PUTapi-change-password"
+                    onclick="tryItOut('PUTapi-change-password');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-PUTapi-change-password"
+                    onclick="cancelTryOut('PUTapi-change-password');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-PUTapi-change-password"
+                    data-initial-text="Send Request 💥"
+                    data-loading-text="⏱ Sending..."
+                    hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-darkblue">PUT</small>
+            <b><code>api/change-password</code></b>
+        </p>
+                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Content-Type"                data-endpoint="PUTapi-change-password"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Accept"                data-endpoint="PUTapi-change-password"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
+        <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>current_password</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="current_password"                data-endpoint="PUTapi-change-password"
+               value="consequatur"
+               data-component="body">
+    <br>
+<p>Example: <code>consequatur</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>new_password</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="new_password"                data-endpoint="PUTapi-change-password"
+               value="mqeopfuudtdsufvyvddqamniihfqcoynlazghdtqtqxbajwbpilpmufinllwloauydlsmsjury"
+               data-component="body">
+    <br>
+<p>Must be at least 6 characters. Example: <code>mqeopfuudtdsufvyvddqamniihfqcoynlazghdtqtqxbajwbpilpmufinllwloauydlsmsjury</code></p>
+        </div>
+        </form>
+
                     <h2 id="endpoints-GETapi-tasks">GET api/tasks</h2>
 
 <p>
@@ -547,14 +844,14 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
-    --get "http://localhost/api/tasks" \
+    --get "https://task-management-pm2m.onrender.com/api/tasks" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/tasks"
+    "https://task-management-pm2m.onrender.com/api/tasks"
 );
 
 const headers = {
@@ -671,22 +968,22 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request POST \
-    "http://localhost/api/tasks" \
+    "https://task-management-pm2m.onrender.com/api/tasks" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --data "{
     \"title\": \"vmqeopfuudtdsufvyvddq\",
     \"description\": \"Dolores dolorum amet iste laborum eius est dolor.\",
-    \"status\": \"completed\",
+    \"status\": \"pending\",
     \"priority\": \"medium\",
-    \"due_date\": \"2025-07-29T12:08:20\"
+    \"due_date\": \"2025-08-04T13:20:28\"
 }"
 </code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/tasks"
+    "https://task-management-pm2m.onrender.com/api/tasks"
 );
 
 const headers = {
@@ -697,9 +994,9 @@ const headers = {
 let body = {
     "title": "vmqeopfuudtdsufvyvddq",
     "description": "Dolores dolorum amet iste laborum eius est dolor.",
-    "status": "completed",
+    "status": "pending",
     "priority": "medium",
-    "due_date": "2025-07-29T12:08:20"
+    "due_date": "2025-08-04T13:20:28"
 };
 
 fetch(url, {
@@ -810,10 +1107,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
 <i>optional</i> &nbsp;
                 <input type="text" style="display: none"
                               name="status"                data-endpoint="POSTapi-tasks"
-               value="completed"
+               value="pending"
                data-component="body">
     <br>
-<p>Example: <code>completed</code></p>
+<p>Example: <code>pending</code></p>
 Must be one of:
 <ul style="list-style-type: square;"><li><code>pending</code></li> <li><code>in_progress</code></li> <li><code>completed</code></li></ul>
         </div>
@@ -836,34 +1133,34 @@ Must be one of:
 <i>optional</i> &nbsp;
                 <input type="text" style="display: none"
                               name="due_date"                data-endpoint="POSTapi-tasks"
-               value="2025-07-29T12:08:20"
+               value="2025-08-04T13:20:28"
                data-component="body">
     <br>
-<p>Must be a valid date. Example: <code>2025-07-29T12:08:20</code></p>
+<p>Must be a valid date. Example: <code>2025-08-04T13:20:28</code></p>
         </div>
         </form>
 
-                    <h2 id="endpoints-GETapi-tasks--id-">GET api/tasks/{id}</h2>
+                    <h2 id="endpoints-GETapi-tasks--task_id-">GET api/tasks/{task_id}</h2>
 
 <p>
 </p>
 
 
 
-<span id="example-requests-GETapi-tasks--id-">
+<span id="example-requests-GETapi-tasks--task_id-">
 <blockquote>Example request:</blockquote>
 
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
-    --get "http://localhost/api/tasks/1" \
+    --get "https://task-management-pm2m.onrender.com/api/tasks/17" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/tasks/1"
+    "https://task-management-pm2m.onrender.com/api/tasks/17"
 );
 
 const headers = {
@@ -878,7 +1175,7 @@ fetch(url, {
 
 </span>
 
-<span id="example-responses-GETapi-tasks--id-">
+<span id="example-responses-GETapi-tasks--task_id-">
             <blockquote>
             <p>Example response (401):</p>
         </blockquote>
@@ -896,43 +1193,43 @@ access-control-allow-origin: *
 }</code>
  </pre>
     </span>
-<span id="execution-results-GETapi-tasks--id-" hidden>
+<span id="execution-results-GETapi-tasks--task_id-" hidden>
     <blockquote>Received response<span
-                id="execution-response-status-GETapi-tasks--id-"></span>:
+                id="execution-response-status-GETapi-tasks--task_id-"></span>:
     </blockquote>
-    <pre class="json"><code id="execution-response-content-GETapi-tasks--id-"
+    <pre class="json"><code id="execution-response-content-GETapi-tasks--task_id-"
       data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
 </span>
-<span id="execution-error-GETapi-tasks--id-" hidden>
+<span id="execution-error-GETapi-tasks--task_id-" hidden>
     <blockquote>Request failed with error:</blockquote>
-    <pre><code id="execution-error-message-GETapi-tasks--id-">
+    <pre><code id="execution-error-message-GETapi-tasks--task_id-">
 
 Tip: Check that you&#039;re properly connected to the network.
 If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
 You can check the Dev Tools console for debugging information.</code></pre>
 </span>
-<form id="form-GETapi-tasks--id-" data-method="GET"
-      data-path="api/tasks/{id}"
+<form id="form-GETapi-tasks--task_id-" data-method="GET"
+      data-path="api/tasks/{task_id}"
       data-authed="0"
       data-hasfiles="0"
       data-isarraybody="0"
       autocomplete="off"
-      onsubmit="event.preventDefault(); executeTryOut('GETapi-tasks--id-', this);">
+      onsubmit="event.preventDefault(); executeTryOut('GETapi-tasks--task_id-', this);">
     <h3>
         Request&nbsp;&nbsp;&nbsp;
                     <button type="button"
                     style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-tryout-GETapi-tasks--id-"
-                    onclick="tryItOut('GETapi-tasks--id-');">Try it out ⚡
+                    id="btn-tryout-GETapi-tasks--task_id-"
+                    onclick="tryItOut('GETapi-tasks--task_id-');">Try it out ⚡
             </button>
             <button type="button"
                     style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-canceltryout-GETapi-tasks--id-"
-                    onclick="cancelTryOut('GETapi-tasks--id-');" hidden>Cancel 🛑
+                    id="btn-canceltryout-GETapi-tasks--task_id-"
+                    onclick="cancelTryOut('GETapi-tasks--task_id-');" hidden>Cancel 🛑
             </button>&nbsp;&nbsp;
             <button type="submit"
                     style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-executetryout-GETapi-tasks--id-"
+                    id="btn-executetryout-GETapi-tasks--task_id-"
                     data-initial-text="Send Request 💥"
                     data-loading-text="⏱ Sending..."
                     hidden>Send Request 💥
@@ -940,7 +1237,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
             </h3>
             <p>
             <small class="badge badge-green">GET</small>
-            <b><code>api/tasks/{id}</code></b>
+            <b><code>api/tasks/{task_id}</code></b>
         </p>
                 <h4 class="fancy-heading-panel"><b>Headers</b></h4>
                                 <div style="padding-left: 28px; clear: unset;">
@@ -948,7 +1245,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 &nbsp;
  &nbsp;
                 <input type="text" style="display: none"
-                              name="Content-Type"                data-endpoint="GETapi-tasks--id-"
+                              name="Content-Type"                data-endpoint="GETapi-tasks--task_id-"
                value="application/json"
                data-component="header">
     <br>
@@ -959,7 +1256,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 &nbsp;
  &nbsp;
                 <input type="text" style="display: none"
-                              name="Accept"                data-endpoint="GETapi-tasks--id-"
+                              name="Accept"                data-endpoint="GETapi-tasks--task_id-"
                value="application/json"
                data-component="header">
     <br>
@@ -967,47 +1264,47 @@ You can check the Dev Tools console for debugging information.</code></pre>
             </div>
                         <h4 class="fancy-heading-panel"><b>URL Parameters</b></h4>
                     <div style="padding-left: 28px; clear: unset;">
-                <b style="line-height: 2;"><code>id</code></b>&nbsp;&nbsp;
+                <b style="line-height: 2;"><code>task_id</code></b>&nbsp;&nbsp;
 <small>integer</small>&nbsp;
  &nbsp;
                 <input type="number" style="display: none"
-               step="any"               name="id"                data-endpoint="GETapi-tasks--id-"
-               value="1"
+               step="any"               name="task_id"                data-endpoint="GETapi-tasks--task_id-"
+               value="17"
                data-component="url">
     <br>
-<p>The ID of the task. Example: <code>1</code></p>
+<p>The ID of the task. Example: <code>17</code></p>
             </div>
                     </form>
 
-                    <h2 id="endpoints-PUTapi-tasks--id-">PUT api/tasks/{id}</h2>
+                    <h2 id="endpoints-PUTapi-tasks--task_id-">PUT api/tasks/{task_id}</h2>
 
 <p>
 </p>
 
 
 
-<span id="example-requests-PUTapi-tasks--id-">
+<span id="example-requests-PUTapi-tasks--task_id-">
 <blockquote>Example request:</blockquote>
 
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request PUT \
-    "http://localhost/api/tasks/1" \
+    "https://task-management-pm2m.onrender.com/api/tasks/17" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --data "{
     \"title\": \"vmqeopfuudtdsufvyvddq\",
     \"description\": \"Dolores dolorum amet iste laborum eius est dolor.\",
-    \"status\": \"completed\",
+    \"status\": \"in_progress\",
     \"priority\": \"low\",
-    \"due_date\": \"2025-07-29T12:08:20\"
+    \"due_date\": \"2025-08-04T13:20:28\"
 }"
 </code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/tasks/1"
+    "https://task-management-pm2m.onrender.com/api/tasks/17"
 );
 
 const headers = {
@@ -1018,9 +1315,9 @@ const headers = {
 let body = {
     "title": "vmqeopfuudtdsufvyvddq",
     "description": "Dolores dolorum amet iste laborum eius est dolor.",
-    "status": "completed",
+    "status": "in_progress",
     "priority": "low",
-    "due_date": "2025-07-29T12:08:20"
+    "due_date": "2025-08-04T13:20:28"
 };
 
 fetch(url, {
@@ -1031,45 +1328,45 @@ fetch(url, {
 
 </span>
 
-<span id="example-responses-PUTapi-tasks--id-">
+<span id="example-responses-PUTapi-tasks--task_id-">
 </span>
-<span id="execution-results-PUTapi-tasks--id-" hidden>
+<span id="execution-results-PUTapi-tasks--task_id-" hidden>
     <blockquote>Received response<span
-                id="execution-response-status-PUTapi-tasks--id-"></span>:
+                id="execution-response-status-PUTapi-tasks--task_id-"></span>:
     </blockquote>
-    <pre class="json"><code id="execution-response-content-PUTapi-tasks--id-"
+    <pre class="json"><code id="execution-response-content-PUTapi-tasks--task_id-"
       data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
 </span>
-<span id="execution-error-PUTapi-tasks--id-" hidden>
+<span id="execution-error-PUTapi-tasks--task_id-" hidden>
     <blockquote>Request failed with error:</blockquote>
-    <pre><code id="execution-error-message-PUTapi-tasks--id-">
+    <pre><code id="execution-error-message-PUTapi-tasks--task_id-">
 
 Tip: Check that you&#039;re properly connected to the network.
 If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
 You can check the Dev Tools console for debugging information.</code></pre>
 </span>
-<form id="form-PUTapi-tasks--id-" data-method="PUT"
-      data-path="api/tasks/{id}"
+<form id="form-PUTapi-tasks--task_id-" data-method="PUT"
+      data-path="api/tasks/{task_id}"
       data-authed="0"
       data-hasfiles="0"
       data-isarraybody="0"
       autocomplete="off"
-      onsubmit="event.preventDefault(); executeTryOut('PUTapi-tasks--id-', this);">
+      onsubmit="event.preventDefault(); executeTryOut('PUTapi-tasks--task_id-', this);">
     <h3>
         Request&nbsp;&nbsp;&nbsp;
                     <button type="button"
                     style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-tryout-PUTapi-tasks--id-"
-                    onclick="tryItOut('PUTapi-tasks--id-');">Try it out ⚡
+                    id="btn-tryout-PUTapi-tasks--task_id-"
+                    onclick="tryItOut('PUTapi-tasks--task_id-');">Try it out ⚡
             </button>
             <button type="button"
                     style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-canceltryout-PUTapi-tasks--id-"
-                    onclick="cancelTryOut('PUTapi-tasks--id-');" hidden>Cancel 🛑
+                    id="btn-canceltryout-PUTapi-tasks--task_id-"
+                    onclick="cancelTryOut('PUTapi-tasks--task_id-');" hidden>Cancel 🛑
             </button>&nbsp;&nbsp;
             <button type="submit"
                     style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-executetryout-PUTapi-tasks--id-"
+                    id="btn-executetryout-PUTapi-tasks--task_id-"
                     data-initial-text="Send Request 💥"
                     data-loading-text="⏱ Sending..."
                     hidden>Send Request 💥
@@ -1077,7 +1374,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
             </h3>
             <p>
             <small class="badge badge-darkblue">PUT</small>
-            <b><code>api/tasks/{id}</code></b>
+            <b><code>api/tasks/{task_id}</code></b>
         </p>
                 <h4 class="fancy-heading-panel"><b>Headers</b></h4>
                                 <div style="padding-left: 28px; clear: unset;">
@@ -1085,7 +1382,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 &nbsp;
  &nbsp;
                 <input type="text" style="display: none"
-                              name="Content-Type"                data-endpoint="PUTapi-tasks--id-"
+                              name="Content-Type"                data-endpoint="PUTapi-tasks--task_id-"
                value="application/json"
                data-component="header">
     <br>
@@ -1096,7 +1393,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 &nbsp;
  &nbsp;
                 <input type="text" style="display: none"
-                              name="Accept"                data-endpoint="PUTapi-tasks--id-"
+                              name="Accept"                data-endpoint="PUTapi-tasks--task_id-"
                value="application/json"
                data-component="header">
     <br>
@@ -1104,15 +1401,15 @@ You can check the Dev Tools console for debugging information.</code></pre>
             </div>
                         <h4 class="fancy-heading-panel"><b>URL Parameters</b></h4>
                     <div style="padding-left: 28px; clear: unset;">
-                <b style="line-height: 2;"><code>id</code></b>&nbsp;&nbsp;
+                <b style="line-height: 2;"><code>task_id</code></b>&nbsp;&nbsp;
 <small>integer</small>&nbsp;
  &nbsp;
                 <input type="number" style="display: none"
-               step="any"               name="id"                data-endpoint="PUTapi-tasks--id-"
-               value="1"
+               step="any"               name="task_id"                data-endpoint="PUTapi-tasks--task_id-"
+               value="17"
                data-component="url">
     <br>
-<p>The ID of the task. Example: <code>1</code></p>
+<p>The ID of the task. Example: <code>17</code></p>
             </div>
                             <h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
         <div style=" padding-left: 28px;  clear: unset;">
@@ -1120,7 +1417,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 <small>string</small>&nbsp;
  &nbsp;
                 <input type="text" style="display: none"
-                              name="title"                data-endpoint="PUTapi-tasks--id-"
+                              name="title"                data-endpoint="PUTapi-tasks--task_id-"
                value="vmqeopfuudtdsufvyvddq"
                data-component="body">
     <br>
@@ -1131,7 +1428,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 <small>string</small>&nbsp;
 <i>optional</i> &nbsp;
                 <input type="text" style="display: none"
-                              name="description"                data-endpoint="PUTapi-tasks--id-"
+                              name="description"                data-endpoint="PUTapi-tasks--task_id-"
                value="Dolores dolorum amet iste laborum eius est dolor."
                data-component="body">
     <br>
@@ -1142,11 +1439,11 @@ You can check the Dev Tools console for debugging information.</code></pre>
 <small>string</small>&nbsp;
 <i>optional</i> &nbsp;
                 <input type="text" style="display: none"
-                              name="status"                data-endpoint="PUTapi-tasks--id-"
-               value="completed"
+                              name="status"                data-endpoint="PUTapi-tasks--task_id-"
+               value="in_progress"
                data-component="body">
     <br>
-<p>Example: <code>completed</code></p>
+<p>Example: <code>in_progress</code></p>
 Must be one of:
 <ul style="list-style-type: square;"><li><code>pending</code></li> <li><code>in_progress</code></li> <li><code>completed</code></li></ul>
         </div>
@@ -1155,7 +1452,7 @@ Must be one of:
 <small>string</small>&nbsp;
 <i>optional</i> &nbsp;
                 <input type="text" style="display: none"
-                              name="priority"                data-endpoint="PUTapi-tasks--id-"
+                              name="priority"                data-endpoint="PUTapi-tasks--task_id-"
                value="low"
                data-component="body">
     <br>
@@ -1168,35 +1465,35 @@ Must be one of:
 <small>string</small>&nbsp;
 <i>optional</i> &nbsp;
                 <input type="text" style="display: none"
-                              name="due_date"                data-endpoint="PUTapi-tasks--id-"
-               value="2025-07-29T12:08:20"
+                              name="due_date"                data-endpoint="PUTapi-tasks--task_id-"
+               value="2025-08-04T13:20:28"
                data-component="body">
     <br>
-<p>Must be a valid date. Example: <code>2025-07-29T12:08:20</code></p>
+<p>Must be a valid date. Example: <code>2025-08-04T13:20:28</code></p>
         </div>
         </form>
 
-                    <h2 id="endpoints-DELETEapi-tasks--id-">DELETE api/tasks/{id}</h2>
+                    <h2 id="endpoints-DELETEapi-tasks--task_id-">DELETE api/tasks/{task_id}</h2>
 
 <p>
 </p>
 
 
 
-<span id="example-requests-DELETEapi-tasks--id-">
+<span id="example-requests-DELETEapi-tasks--task_id-">
 <blockquote>Example request:</blockquote>
 
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request DELETE \
-    "http://localhost/api/tasks/1" \
+    "https://task-management-pm2m.onrender.com/api/tasks/17" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/tasks/1"
+    "https://task-management-pm2m.onrender.com/api/tasks/17"
 );
 
 const headers = {
@@ -1211,45 +1508,45 @@ fetch(url, {
 
 </span>
 
-<span id="example-responses-DELETEapi-tasks--id-">
+<span id="example-responses-DELETEapi-tasks--task_id-">
 </span>
-<span id="execution-results-DELETEapi-tasks--id-" hidden>
+<span id="execution-results-DELETEapi-tasks--task_id-" hidden>
     <blockquote>Received response<span
-                id="execution-response-status-DELETEapi-tasks--id-"></span>:
+                id="execution-response-status-DELETEapi-tasks--task_id-"></span>:
     </blockquote>
-    <pre class="json"><code id="execution-response-content-DELETEapi-tasks--id-"
+    <pre class="json"><code id="execution-response-content-DELETEapi-tasks--task_id-"
       data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
 </span>
-<span id="execution-error-DELETEapi-tasks--id-" hidden>
+<span id="execution-error-DELETEapi-tasks--task_id-" hidden>
     <blockquote>Request failed with error:</blockquote>
-    <pre><code id="execution-error-message-DELETEapi-tasks--id-">
+    <pre><code id="execution-error-message-DELETEapi-tasks--task_id-">
 
 Tip: Check that you&#039;re properly connected to the network.
 If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
 You can check the Dev Tools console for debugging information.</code></pre>
 </span>
-<form id="form-DELETEapi-tasks--id-" data-method="DELETE"
-      data-path="api/tasks/{id}"
+<form id="form-DELETEapi-tasks--task_id-" data-method="DELETE"
+      data-path="api/tasks/{task_id}"
       data-authed="0"
       data-hasfiles="0"
       data-isarraybody="0"
       autocomplete="off"
-      onsubmit="event.preventDefault(); executeTryOut('DELETEapi-tasks--id-', this);">
+      onsubmit="event.preventDefault(); executeTryOut('DELETEapi-tasks--task_id-', this);">
     <h3>
         Request&nbsp;&nbsp;&nbsp;
                     <button type="button"
                     style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-tryout-DELETEapi-tasks--id-"
-                    onclick="tryItOut('DELETEapi-tasks--id-');">Try it out ⚡
+                    id="btn-tryout-DELETEapi-tasks--task_id-"
+                    onclick="tryItOut('DELETEapi-tasks--task_id-');">Try it out ⚡
             </button>
             <button type="button"
                     style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-canceltryout-DELETEapi-tasks--id-"
-                    onclick="cancelTryOut('DELETEapi-tasks--id-');" hidden>Cancel 🛑
+                    id="btn-canceltryout-DELETEapi-tasks--task_id-"
+                    onclick="cancelTryOut('DELETEapi-tasks--task_id-');" hidden>Cancel 🛑
             </button>&nbsp;&nbsp;
             <button type="submit"
                     style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-executetryout-DELETEapi-tasks--id-"
+                    id="btn-executetryout-DELETEapi-tasks--task_id-"
                     data-initial-text="Send Request 💥"
                     data-loading-text="⏱ Sending..."
                     hidden>Send Request 💥
@@ -1257,7 +1554,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
             </h3>
             <p>
             <small class="badge badge-red">DELETE</small>
-            <b><code>api/tasks/{id}</code></b>
+            <b><code>api/tasks/{task_id}</code></b>
         </p>
                 <h4 class="fancy-heading-panel"><b>Headers</b></h4>
                                 <div style="padding-left: 28px; clear: unset;">
@@ -1265,7 +1562,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 &nbsp;
  &nbsp;
                 <input type="text" style="display: none"
-                              name="Content-Type"                data-endpoint="DELETEapi-tasks--id-"
+                              name="Content-Type"                data-endpoint="DELETEapi-tasks--task_id-"
                value="application/json"
                data-component="header">
     <br>
@@ -1276,7 +1573,371 @@ You can check the Dev Tools console for debugging information.</code></pre>
 &nbsp;
  &nbsp;
                 <input type="text" style="display: none"
-                              name="Accept"                data-endpoint="DELETEapi-tasks--id-"
+                              name="Accept"                data-endpoint="DELETEapi-tasks--task_id-"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                        <h4 class="fancy-heading-panel"><b>URL Parameters</b></h4>
+                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>task_id</code></b>&nbsp;&nbsp;
+<small>integer</small>&nbsp;
+ &nbsp;
+                <input type="number" style="display: none"
+               step="any"               name="task_id"                data-endpoint="DELETEapi-tasks--task_id-"
+               value="17"
+               data-component="url">
+    <br>
+<p>The ID of the task. Example: <code>17</code></p>
+            </div>
+                    </form>
+
+                    <h2 id="endpoints-PATCHapi-tasks--task--complete">PATCH api/tasks/{task}/complete</h2>
+
+<p>
+</p>
+
+
+
+<span id="example-requests-PATCHapi-tasks--task--complete">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request PATCH \
+    "https://task-management-pm2m.onrender.com/api/tasks/17/complete" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json"</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "https://task-management-pm2m.onrender.com/api/tasks/17/complete"
+);
+
+const headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+fetch(url, {
+    method: "PATCH",
+    headers,
+}).then(response =&gt; response.json());</code></pre></div>
+
+</span>
+
+<span id="example-responses-PATCHapi-tasks--task--complete">
+</span>
+<span id="execution-results-PATCHapi-tasks--task--complete" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-PATCHapi-tasks--task--complete"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-PATCHapi-tasks--task--complete"
+      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
+</span>
+<span id="execution-error-PATCHapi-tasks--task--complete" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-PATCHapi-tasks--task--complete">
+
+Tip: Check that you&#039;re properly connected to the network.
+If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
+You can check the Dev Tools console for debugging information.</code></pre>
+</span>
+<form id="form-PATCHapi-tasks--task--complete" data-method="PATCH"
+      data-path="api/tasks/{task}/complete"
+      data-authed="0"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('PATCHapi-tasks--task--complete', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-PATCHapi-tasks--task--complete"
+                    onclick="tryItOut('PATCHapi-tasks--task--complete');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-PATCHapi-tasks--task--complete"
+                    onclick="cancelTryOut('PATCHapi-tasks--task--complete');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-PATCHapi-tasks--task--complete"
+                    data-initial-text="Send Request 💥"
+                    data-loading-text="⏱ Sending..."
+                    hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-purple">PATCH</small>
+            <b><code>api/tasks/{task}/complete</code></b>
+        </p>
+                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Content-Type"                data-endpoint="PATCHapi-tasks--task--complete"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Accept"                data-endpoint="PATCHapi-tasks--task--complete"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                        <h4 class="fancy-heading-panel"><b>URL Parameters</b></h4>
+                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>task</code></b>&nbsp;&nbsp;
+<small>integer</small>&nbsp;
+ &nbsp;
+                <input type="number" style="display: none"
+               step="any"               name="task"                data-endpoint="PATCHapi-tasks--task--complete"
+               value="17"
+               data-component="url">
+    <br>
+<p>The task. Example: <code>17</code></p>
+            </div>
+                    </form>
+
+                    <h2 id="endpoints-GETapi-tasks-overdue">GET api/tasks/overdue</h2>
+
+<p>
+</p>
+
+
+
+<span id="example-requests-GETapi-tasks-overdue">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request GET \
+    --get "https://task-management-pm2m.onrender.com/api/tasks/overdue" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json"</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "https://task-management-pm2m.onrender.com/api/tasks/overdue"
+);
+
+const headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+fetch(url, {
+    method: "GET",
+    headers,
+}).then(response =&gt; response.json());</code></pre></div>
+
+</span>
+
+<span id="example-responses-GETapi-tasks-overdue">
+            <blockquote>
+            <p>Example response (401):</p>
+        </blockquote>
+                <details class="annotation">
+            <summary style="cursor: pointer;">
+                <small onclick="textContent = parentElement.parentElement.open ? 'Show headers' : 'Hide headers'">Show headers</small>
+            </summary>
+            <pre><code class="language-http">cache-control: no-cache, private
+content-type: application/json
+access-control-allow-origin: *
+ </code></pre></details>         <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;message&quot;: &quot;Unauthenticated.&quot;
+}</code>
+ </pre>
+    </span>
+<span id="execution-results-GETapi-tasks-overdue" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-GETapi-tasks-overdue"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-GETapi-tasks-overdue"
+      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
+</span>
+<span id="execution-error-GETapi-tasks-overdue" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-GETapi-tasks-overdue">
+
+Tip: Check that you&#039;re properly connected to the network.
+If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
+You can check the Dev Tools console for debugging information.</code></pre>
+</span>
+<form id="form-GETapi-tasks-overdue" data-method="GET"
+      data-path="api/tasks/overdue"
+      data-authed="0"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('GETapi-tasks-overdue', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-GETapi-tasks-overdue"
+                    onclick="tryItOut('GETapi-tasks-overdue');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-GETapi-tasks-overdue"
+                    onclick="cancelTryOut('GETapi-tasks-overdue');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-GETapi-tasks-overdue"
+                    data-initial-text="Send Request 💥"
+                    data-loading-text="⏱ Sending..."
+                    hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-green">GET</small>
+            <b><code>api/tasks/overdue</code></b>
+        </p>
+                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Content-Type"                data-endpoint="GETapi-tasks-overdue"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Accept"                data-endpoint="GETapi-tasks-overdue"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                        </form>
+
+                    <h2 id="endpoints-PATCHapi-tasks--id--restore">PATCH api/tasks/{id}/restore</h2>
+
+<p>
+</p>
+
+
+
+<span id="example-requests-PATCHapi-tasks--id--restore">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request PATCH \
+    "https://task-management-pm2m.onrender.com/api/tasks/17/restore" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json"</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "https://task-management-pm2m.onrender.com/api/tasks/17/restore"
+);
+
+const headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+fetch(url, {
+    method: "PATCH",
+    headers,
+}).then(response =&gt; response.json());</code></pre></div>
+
+</span>
+
+<span id="example-responses-PATCHapi-tasks--id--restore">
+</span>
+<span id="execution-results-PATCHapi-tasks--id--restore" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-PATCHapi-tasks--id--restore"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-PATCHapi-tasks--id--restore"
+      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
+</span>
+<span id="execution-error-PATCHapi-tasks--id--restore" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-PATCHapi-tasks--id--restore">
+
+Tip: Check that you&#039;re properly connected to the network.
+If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
+You can check the Dev Tools console for debugging information.</code></pre>
+</span>
+<form id="form-PATCHapi-tasks--id--restore" data-method="PATCH"
+      data-path="api/tasks/{id}/restore"
+      data-authed="0"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('PATCHapi-tasks--id--restore', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-PATCHapi-tasks--id--restore"
+                    onclick="tryItOut('PATCHapi-tasks--id--restore');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-PATCHapi-tasks--id--restore"
+                    onclick="cancelTryOut('PATCHapi-tasks--id--restore');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-PATCHapi-tasks--id--restore"
+                    data-initial-text="Send Request 💥"
+                    data-loading-text="⏱ Sending..."
+                    hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-purple">PATCH</small>
+            <b><code>api/tasks/{id}/restore</code></b>
+        </p>
+                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Content-Type"                data-endpoint="PATCHapi-tasks--id--restore"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Accept"                data-endpoint="PATCHapi-tasks--id--restore"
                value="application/json"
                data-component="header">
     <br>
@@ -1288,11 +1949,11 @@ You can check the Dev Tools console for debugging information.</code></pre>
 <small>integer</small>&nbsp;
  &nbsp;
                 <input type="number" style="display: none"
-               step="any"               name="id"                data-endpoint="DELETEapi-tasks--id-"
-               value="1"
+               step="any"               name="id"                data-endpoint="PATCHapi-tasks--id--restore"
+               value="17"
                data-component="url">
     <br>
-<p>The ID of the task. Example: <code>1</code></p>
+<p>The ID of the task. Example: <code>17</code></p>
             </div>
                     </form>
 
